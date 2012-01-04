@@ -19,19 +19,13 @@ app.post('/activate/:feed_id',
   // Success handling function
   function(request, response) {
     
-    var secret;
-    for(var key in request.body){
-      secret = key.match(/<Unique>(.*)<\/Unique>/)[1];
-      break;
-    }
-    
     var respStr = 
 '<ted5000ActivationResponse>\
   <PostServer>' + request.headers.host + '</PostServer>\
   <UseSSL>T</UseSSL>\
   <PostPort>443</PostPort>\
   <PostURL>/post/' + request.params.feed_id + '</PostURL>\
-  <AuthToken>' + secret + '/AuthToken>\
+  <AuthToken>' + extract_post_body(request.body).match(/<Unique>(.*)<\/Unique>/)[1]; + '/AuthToken>\
   <PostRate>1/PostRate>\
   <HighPrec>T</HighPrec>\
 </ted5000ActivationResponse>'
@@ -42,10 +36,20 @@ app.post('/activate/:feed_id',
 
 app.post('/post/:feed_id',
   // Success handling function
-  function(request, response) {}
+  function(request, response) {
+    console.log(extract_post_body(request.body));
+    response.send(200);
+  }
 );
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
+
+
+function extract_post_body(post){
+  for(var key in post){
+    return key
+  }
+}
