@@ -27,7 +27,7 @@ app.post('/activate/:feed_id',
     
     var respStr = 
 '<ted5000ActivationResponse>\
-  <PostServer>pachube-ted.heroku.com/</PostServer>\
+  <PostServer>' + request.headers.host + '</PostServer>\
   <UseSSL>T</UseSSL>\
   <PostPort>443</PostPort>\
   <PostURL>/post/' + request.params.feed_id + '</PostURL>\
