@@ -1,0 +1,10 @@
+<h1>Configure your TED5000</h2>
+<p>Please enter the following details into your TED5000</p>
+<dl>
+  <dt>URL of the authentication service:</dt>
+  <dd>https://pachube-ted.herokuapp.com/activate</dd>
+  <dt>Unique identifier:</dt>
+  <dd><%= ted_userid %></dd>
+</dl>
+  
+<p>When the device is successfully posting data to Pachube you should be able to view your data here: <a href="https://<%= pachube_url %>/feeds/<%= feed_id %>">https://<%= pachube_url %>/feeds/<%= feed_id %></a>

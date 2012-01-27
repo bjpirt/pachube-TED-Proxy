@@ -9,7 +9,6 @@ To Do
 =====
  
  * Figure out how to extract the body properly
- * Get XML parsing working
  * Send to Pachube
  * Easy configuration via /
  * Set up via oAuth
